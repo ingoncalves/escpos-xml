@@ -1,0 +1,46 @@
+{
+  "name": "escpos-xml",
+  "version": "1.0.0",
+  "description": "ESC/POS with XML interface",
+  "homepage": "https://gitlab.com/datahex/escpos-xml#README",
+  "author": "Guilherme Inácio Gonçalves",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "lib/index",
+  "scripts": {
+    "start": "npm run build && node ./dist/index.js",
+    "build": "webpack --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/datahex/escpos-xml.git"
+  },
+  "keywords": [
+    "escpos",
+    "esc",
+    "pos",
+    "xml",
+    "printer"
+  ],
+  "bugs": {
+    "url": "https://gitlab.com/datahex/escpos-xml/issues"
+  },
+  "dependencies": {
+    "@types/xml-parser": "^1.2.29",
+    "lodash": "^4.17.4",
+    "mutable-buffer": "^2.0.3",
+    "xml-parser": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.74",
+    "@types/xml2js": "^0.4.0",
+    "mocha": "^3.5.0",
+    "nyc": "^11.2.1",
+    "ts-loader": "^2.3.4",
+    "tslint": "^5.7.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.5"
+  }
+}
