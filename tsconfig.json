@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "declaration": false,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es2015",
+    "target": "es5",
     "outDir": "./dist/"
   },
   "include": [

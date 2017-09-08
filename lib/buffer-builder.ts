@@ -113,7 +113,13 @@ export default class BufferBuilder {
   }
 
   public printText(text:string):BufferBuilder {
+    this.buffer.write(text, 'ascii');
+    return this;
+  }
+
+  public printTextLine(text:string):BufferBuilder {
     this.buffer.write(text);
+    this.buffer.breakLine();
     return this;
   }
 
@@ -128,6 +134,7 @@ export default class BufferBuilder {
   }
 
   public build():number[] {
+    this.lineFeed();
     this.buffer.write(Command.ESC_init);
     return this.buffer.flush();
   }

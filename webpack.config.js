@@ -1,8 +1,10 @@
-const path = require('path');
+var webpack = require('webpack');
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
-  entry: './lib/index.ts',
+  entry: __dirname + '/lib/index.ts',
   devtool: 'inline-source-map',
+  target: 'node',
   module: {
     rules: [{
       test: /\.tsx?$/,
@@ -14,8 +16,16 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"]
   },
   output: {
+    path: __dirname + '/dist',
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    library: 'escpos-xml',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
+  },
+  plugins: [
+    new UglifyJsPlugin({
+      minimize: true
+    })
+  ]
 };
 

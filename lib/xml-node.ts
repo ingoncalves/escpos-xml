@@ -1,31 +1,36 @@
+import { get, extend } from 'lodash';
 import BufferBuilder from './buffer-builder';
-import NodeFactory from './node-factory';
 
 export default abstract class XMLNode {
 
-  private name:String;
-  private attributes:any;
-  private content:String;
-  private children:XMLNode[];
+  protected name:String;
+  protected attributes:any;
+  protected content:string;
+  protected children:XMLNode[];
 
-  constructor(name:string, node:any, private scope:any) {
-    this.attributes = node.attributes;
+  constructor(name:string, node:any) {
+    this.attributes = node.attributes || {};
     this.content = node.content;
     this.children = [];
   }
 
   public addChild(child:XMLNode) {
-    this.children.push(child);
+    if(child)
+      this.children.push(child);
   }
 
-  public abstract open(attributes:any, scope:any, bufferBuilder:BufferBuilder):BufferBuilder;
+  protected getContent():string {
+    return this.content;
+  }
+
+  public abstract open(bufferBuilder:BufferBuilder):BufferBuilder;
 
   public abstract close(bufferBuilder:BufferBuilder):BufferBuilder;
 
   public draw(bufferBuilder:BufferBuilder):BufferBuilder {
 
     // open tag
-    this.open(this.attributes, this.scope, bufferBuilder);
+    this.open(bufferBuilder);
 
     if(this.children.length > 0) {
       this.children.forEach(child => child.draw(bufferBuilder));
@@ -36,4 +41,5 @@ export default abstract class XMLNode {
 
     return bufferBuilder;
   }
+
 }

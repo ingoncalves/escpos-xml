@@ -1,30 +1,21 @@
+import TemplateParser from './template-parser';
 import XMLParser from './xml-parser';
+import BufferBuilder from './buffer-builder';
 
-class EscPosXml {
+export default {
 
-  private xmlParser:XMLParser;
+  getBufferFromTemplate: (template:string, data:any):number[] => {
+    let templateParser = new TemplateParser();
+    return templateParser.parser(template, data).build();
+  },
 
-  constructor() {
-    this.xmlParser = new XMLParser();
-  }
+  getBufferFromXML: (xml:string):number[] => {
+    let xmlParser = new XMLParser();
+    return xmlParser.parser(xml).build();
+  },
 
-  getBuffer(xml:string, data:any):number[] {
-    return this.xmlParser.parser(xml, data).build();
+  getBufferBuilder: ():BufferBuilder => {
+    return new BufferBuilder();
   }
 
 }
-
-let printer = new EscPosXml();
-let data = { name: 'Guilherme', date: new Date().toISOString() };
-let xml =  `
-  <document>
-    <text value="hello "/>
-    <text value="world"/>
-  </document>
-`;
-
-let buffer = printer.getBuffer(xml, data);
-console.log(buffer);
-
-
-

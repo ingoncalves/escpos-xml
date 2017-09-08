@@ -3,11 +3,11 @@ import BufferBuilder from '../buffer-builder';
 
 export default class DocumentNode extends XMLNode {
 
-  constructor(node:any, scope:any) {
-    super('document', node, scope);
+  constructor(node:any) {
+    super('document', node);
   }
 
-  public open(node:any, scope:any, bufferBuilder:BufferBuilder):BufferBuilder {
+  public open(bufferBuilder:BufferBuilder):BufferBuilder {
     return  bufferBuilder;
   }
 

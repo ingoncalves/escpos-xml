@@ -10,6 +10,7 @@
   "scripts": {
     "start": "npm run build && node ./dist/index.js",
     "build": "webpack --config webpack.config.js",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,16 +28,17 @@
     "url": "https://gitlab.com/datahex/escpos-xml/issues"
   },
   "dependencies": {
-    "@types/xml-parser": "^1.2.29",
+    "handlebars": "^4.0.10",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "mutable-buffer": "^2.0.3",
+    "numeral": "^2.0.6",
     "xml-parser": "^1.2.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.74",
-    "@types/xml2js": "^0.4.0",
-    "mocha": "^3.5.0",
-    "nyc": "^11.2.1",
+    "@types/numeral": "0.0.22",
+    "@types/xml-parser": "^1.2.29",
     "ts-loader": "^2.3.4",
     "tslint": "^5.7.0",
     "tslint-eslint-rules": "^4.1.1",
