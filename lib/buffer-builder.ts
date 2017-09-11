@@ -1,5 +1,5 @@
-import {Command} from './command';
-import {MutableBuffer} from 'mutable-buffer';
+import { Command } from './command';
+import { MutableBuffer } from 'mutable-buffer';
 
 export default class BufferBuilder {
 
@@ -57,13 +57,13 @@ export default class BufferBuilder {
     return this;
   }
 
-  public align(alignment:ALIGNMENT):BufferBuilder {
+  public startAlign(alignment:ALIGNMENT):BufferBuilder {
     this.buffer.write(Command.ESC_a(alignment));
     return this;
   }
 
   public resetAlign():BufferBuilder {
-    return this.align(ALIGNMENT.LEFT);
+    return this.startAlign(ALIGNMENT.LEFT);
   }
 
   public startWhiteMode():BufferBuilder {
@@ -86,25 +86,21 @@ export default class BufferBuilder {
     return this;
   }
 
-  public printBarcode(data:string, barcodeSystem:BARCODE_SYSTEM, width:BARCODE_WIDTH = BARCODE_WIDTH.DOT_375, height:number = 162, labelFont:BARCODE_LABEL_FONT = BARCODE_LABEL_FONT.FONT_A, labelPosition:BARCODE_LABEL_POSITION = BARCODE_LABEL_POSITION.BOTTOM, alignment:ALIGNMENT = ALIGNMENT.CENTER, leftSpacing:number = 0):BufferBuilder {
-    this.align(alignment); //align
+  public printBarcode(data:string, barcodeSystem:BARCODE_SYSTEM, width:BARCODE_WIDTH = BARCODE_WIDTH.DOT_375, height:number = 162, labelFont:BARCODE_LABEL_FONT = BARCODE_LABEL_FONT.FONT_A, labelPosition:BARCODE_LABEL_POSITION = BARCODE_LABEL_POSITION.BOTTOM, leftSpacing:number = 0):BufferBuilder {
     this.buffer.write(Command.GS_w(width)); // width
     this.buffer.write(Command.GS_h(height)); // height
     this.buffer.write(Command.GS_x(leftSpacing)); // left spacing
     this.buffer.write(Command.GS_f(labelFont)); // HRI font
     this.buffer.write(Command.GS_H(labelPosition)); // HRI font
     this.buffer.write(Command.GS_K(barcodeSystem, data.length)); // data is a string in UTF-8
-    this.buffer.write(data);
-    this.resetAlign();
+    this.buffer.write(data, 'ascii');
     return this;
   }
 
-  public printQRcode(data:string, version:number = 1, errorCorrectionLevel:QR_EC_LEVEL = QR_EC_LEVEL.H, componentTypes:number = 8, alignment:ALIGNMENT = ALIGNMENT.CENTER):BufferBuilder {
-    this.align(alignment); //align
+  public printQRcode(data:string, version:number = 1, errorCorrectionLevel:QR_EC_LEVEL = QR_EC_LEVEL.H, componentTypes:number = 8):BufferBuilder {
     this.buffer.write(Command.ESC_Z(version, errorCorrectionLevel, componentTypes));
     this.buffer.writeUInt16LE(data.length); // data is a string in UTF-8
-    this.buffer.write(data);
-    this.resetAlign();
+    this.buffer.write(data, 'ascii');
     return this;
   }
 
@@ -118,9 +114,7 @@ export default class BufferBuilder {
   }
 
   public printTextLine(text:string):BufferBuilder {
-    this.buffer.write(text);
-    this.buffer.breakLine();
-    return this;
+    return this.printText(text).breakLine();
   }
 
   public breakLine(lines:number = 0):BufferBuilder {

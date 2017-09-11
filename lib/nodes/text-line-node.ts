@@ -7,7 +7,7 @@ export default class TextLineNode extends XmlNode {
   private textNode:TextNode;
 
   constructor(node:any) {
-    super('text-line', node);
+    super(node);
     this.textNode = new TextNode(node);
   }
 

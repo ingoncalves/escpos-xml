@@ -3,12 +3,11 @@ import BufferBuilder from './buffer-builder';
 
 export default abstract class XMLNode {
 
-  protected name:String;
   protected attributes:any;
   protected content:string;
   protected children:XMLNode[];
 
-  constructor(name:string, node:any) {
+  constructor(node:any) {
     this.attributes = node.attributes || {};
     this.content = node.content;
     this.children = [];
