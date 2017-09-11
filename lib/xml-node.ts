@@ -1,4 +1,3 @@
-import { get, extend } from 'lodash';
 import BufferBuilder from './buffer-builder';
 
 export default abstract class XMLNode {

@@ -8,7 +8,7 @@ export default class QRcodeNode extends XMLNode {
   }
 
   public open(bufferBuilder:BufferBuilder):BufferBuilder {
-    let system, version, errorCorrectionLevel, componentTypes;
+    let version, errorCorrectionLevel, componentTypes;
 
     if(/\d+/.test(this.attributes.version)) {
       version = parseInt(this.attributes.version);

@@ -3,8 +3,6 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
   entry: __dirname + '/lib/index.ts',
-  devtool: 'inline-source-map',
-  target: 'node',
   module: {
     rules: [{
       test: /\.tsx?$/,
@@ -13,19 +11,20 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      'handlebars' : 'handlebars/dist/handlebars.js'
+    }
   },
   output: {
-    path: __dirname + '/dist',
+    path: __dirname,
     filename: 'index.js',
     library: 'escpos-xml',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
   plugins: [
-    new UglifyJsPlugin({
-      minimize: true
-    })
+    new UglifyJsPlugin()
   ]
 };
 

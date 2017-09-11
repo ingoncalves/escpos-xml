@@ -5,13 +5,19 @@
   "homepage": "https://gitlab.com/datahex/escpos-xml#README",
   "author": "Guilherme Inácio Gonçalves",
   "license": "UNLICENSED",
-  "main": "dist/index.js",
+  "private": true,
+  "main": "index.js",
   "types": "lib/index",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
-    "start": "npm run build && node ./dist/index.js",
-    "build": "webpack --config webpack.config.js",
-    "watch": "webpack --config webpack.config.js --watch",
-    "prepublish": "npm run build",
+    "build": "npm run lint && npm run webpack:build",
+    "watch": "npm run webpack:watch",
+    "webpack:build": "webpack --config webpack.config.js",
+    "webpack:watch": "webpack --config webpack.config.js --watch",
+    "lint": "tslint --format codeFrame --type-check --project tslint.json lib/**/*.ts",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
