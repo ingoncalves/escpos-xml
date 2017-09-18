@@ -5,35 +5,43 @@ export class BufferBuilder {
 
   private buffer: MutableBuffer;
 
-  constructor() {
+  constructor(private defaultSettings: boolean = true) {
     this.buffer = new MutableBuffer();
-    this.resetCharacterSize();
-    this.resetCharacterCodeTable();
+
+    if (this.defaultSettings) {
+      this.resetCharacterSize();
+      this.resetCharacterCodeTable();
+    }
+
+  }
+
+  public end(): BufferBuilder {
+    return this;
   }
 
   public resetCharacterCodeTable(): BufferBuilder {
-    this.buffer.write(Command.ESC_t(0))
+    this.buffer.write(Command.ESC_t(0));
     return this;
   }
 
   public setCharacterSize(width: number = 0, height: number = 0): BufferBuilder {
     let size = (width << 4) + height;
-    this.buffer.write(Command.GS_exclamation(size))
+    this.buffer.write(Command.GS_exclamation(size));
     return this;
   }
 
   public resetCharacterSize(): BufferBuilder {
-    this.buffer.write(Command.GS_exclamation(0))
+    this.buffer.write(Command.GS_exclamation(0));
     return this;
   }
 
   public startCompressedCharacter(): BufferBuilder {
-    this.buffer.write(Command.ESC_M(1))
+    this.buffer.write(Command.ESC_M(1));
     return this;
   }
 
   public endCompressedCharacter(): BufferBuilder {
-    this.buffer.write(Command.ESC_M(0))
+    this.buffer.write(Command.ESC_M(0));
     return this;
   }
 
@@ -105,6 +113,7 @@ export class BufferBuilder {
   }
 
   public printBitmap(image: number[], width: number, height: number, scale: BITMAP_SCALE = BITMAP_SCALE.NORMAL): BufferBuilder {
+    //TODO
     return this;
   }
 
@@ -127,9 +136,17 @@ export class BufferBuilder {
     return this;
   }
 
+  public transmitStatus(statusType: STATUS_TYPE): BufferBuilder {
+    this.buffer.write(Command.DLE_EOT(statusType));
+    return this;
+  }
+
   public build(): number[] {
-    this.lineFeed();
-    this.buffer.write(Command.ESC_init);
+    if (this.defaultSettings) {
+      this.lineFeed();
+      this.buffer.write(Command.ESC_init);
+    }
+
     return this.buffer.flush();
   }
 
@@ -190,4 +207,11 @@ export enum BITMAP_SCALE {
   DOUBLE_WIDTH = 49,
   DOUBLE_HEIGHT = 50,
   FOUR_TIMES = 51
+}
+
+export enum STATUS_TYPE {
+  PRINTER_STATUS = 1,
+  OFFLINE_STATUS = 2,
+  ERROR_STATUS = 3,
+  PAPER_ROLL_SENSOR_STATUS = 4
 }
