@@ -1,22 +1,22 @@
-import XMLNode from '../xml-node';
-import BufferBuilder, { QR_EC_LEVEL } from '../buffer-builder';
+import { XMLNode } from '../xml-node';
+import { BufferBuilder, QR_EC_LEVEL } from '../buffer-builder';
 
 export default class QRcodeNode extends XMLNode {
 
-  constructor(node:any) {
+  constructor(node: any) {
     super(node);
   }
 
-  public open(bufferBuilder:BufferBuilder):BufferBuilder {
+  public open(bufferBuilder: BufferBuilder): BufferBuilder {
     let version, errorCorrectionLevel, componentTypes;
 
-    if(/\d+/.test(this.attributes.version)) {
+    if (/\d+/.test(this.attributes.version)) {
       version = parseInt(this.attributes.version);
     } else {
       version = 1;
     }
 
-    switch(this.attributes.ecl) {
+    switch (this.attributes.ecl) {
       case 'L':
         errorCorrectionLevel = QR_EC_LEVEL.L; break;
       case 'M':
@@ -29,20 +29,20 @@ export default class QRcodeNode extends XMLNode {
         errorCorrectionLevel = QR_EC_LEVEL.H;
     }
 
-    if(/\d+/.test(this.attributes.componentTypes)) {
+    if (/\d+/.test(this.attributes.componentTypes)) {
       componentTypes = parseInt(this.attributes.componentTypes);
     } else {
       componentTypes = 8;
     }
 
-    if(this.content) {
+    if (this.content) {
       bufferBuilder.printQRcode(this.content, version, errorCorrectionLevel, componentTypes);
     }
 
-    return  bufferBuilder;
+    return bufferBuilder;
   }
 
-  public close(bufferBuilder:BufferBuilder):BufferBuilder {
+  public close(bufferBuilder: BufferBuilder): BufferBuilder {
     return bufferBuilder;
   }
 

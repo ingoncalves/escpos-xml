@@ -1,14 +1,14 @@
-import XMLNode from '../xml-node';
-import BufferBuilder, { UNDERLINE_MODE } from '../buffer-builder';
+import { XMLNode } from '../xml-node';
+import { BufferBuilder, UNDERLINE_MODE } from '../buffer-builder';
 
 export default class UnderlineNode extends XMLNode {
 
-  constructor(node:any) {
+  constructor(node: any) {
     super(node);
   }
 
-  public open(bufferBuilder:BufferBuilder):BufferBuilder {
-    switch(this.attributes.mode) {
+  public open(bufferBuilder: BufferBuilder): BufferBuilder {
+    switch (this.attributes.mode) {
       case 'one-point':
         bufferBuilder.startUnderline(UNDERLINE_MODE.ONE_POINT_OF_COARSE); break;
       case 'two-points':
@@ -16,10 +16,10 @@ export default class UnderlineNode extends XMLNode {
       default:
         bufferBuilder.startUnderline();
     }
-    return  bufferBuilder;
+    return bufferBuilder;
   }
 
-  public close(bufferBuilder:BufferBuilder):BufferBuilder {
+  public close(bufferBuilder: BufferBuilder): BufferBuilder {
     bufferBuilder.endUnderline();
     return bufferBuilder;
   }

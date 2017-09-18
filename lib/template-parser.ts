@@ -3,14 +3,14 @@ import * as moment from 'moment';
 import * as numeral from 'numeral';
 import 'numeral/locales/pt-br';
 import { cloneDeep } from 'lodash';
-import XMLParser from './xml-parser';
-import BufferBuilder from './buffer-builder';
+import { XMLParser } from './xml-parser';
+import { BufferBuilder } from './buffer-builder';
 
-export default class TemplateParser {
+export class TemplateParser {
 
-  private moment:any;
-  private numeral:any;
-  private handlebars:any;
+  private moment: any;
+  private numeral: any;
+  private handlebars: any;
 
   constructor() {
     this.moment = moment;
@@ -32,7 +32,7 @@ export default class TemplateParser {
       }
       var date = this.moment(context);
 
-      if (block.hash.timezone){
+      if (block.hash.timezone) {
         date.tz(block.hash.timezone);
       }
 
@@ -66,7 +66,7 @@ export default class TemplateParser {
     });
   }
 
-  public parser(template, scope):BufferBuilder {
+  public parser(template, scope): BufferBuilder {
     let fn = this.handlebars.compile(template);
     let xml = fn(scope);
     return new XMLParser().parser(xml);

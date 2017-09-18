@@ -1,18 +1,18 @@
-import XMLNode from '../xml-node';
-import BufferBuilder from '../buffer-builder';
+import { XMLNode } from '../xml-node';
+import { BufferBuilder } from '../buffer-builder';
 
 export default class BoldNode extends XMLNode {
 
-  constructor(node:any) {
+  constructor(node: any) {
     super(node);
   }
 
-  public open(bufferBuilder:BufferBuilder):BufferBuilder {
+  public open(bufferBuilder: BufferBuilder): BufferBuilder {
     bufferBuilder.startBold();
-    return  bufferBuilder;
+    return bufferBuilder;
   }
 
-  public close(bufferBuilder:BufferBuilder):BufferBuilder {
+  public close(bufferBuilder: BufferBuilder): BufferBuilder {
     bufferBuilder.endBold();
     return bufferBuilder;
   }

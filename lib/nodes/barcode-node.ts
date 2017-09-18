@@ -1,16 +1,16 @@
-import XMLNode from '../xml-node';
-import BufferBuilder, { BARCODE_SYSTEM, BARCODE_WIDTH, BARCODE_LABEL_FONT, BARCODE_LABEL_POSITION } from '../buffer-builder';
+import { XMLNode } from '../xml-node';
+import { BufferBuilder, BARCODE_SYSTEM, BARCODE_WIDTH, BARCODE_LABEL_FONT, BARCODE_LABEL_POSITION } from '../buffer-builder';
 
 export default class BarcodeNode extends XMLNode {
 
-  constructor(node:any) {
+  constructor(node: any) {
     super(node);
   }
 
-  public open(bufferBuilder:BufferBuilder):BufferBuilder {
+  public open(bufferBuilder: BufferBuilder): BufferBuilder {
     let system, width, height, labelFont, labelPosition, leftSpacing;
 
-    switch(this.attributes.system) {
+    switch (this.attributes.system) {
       case 'UPC_A':
         system = BARCODE_SYSTEM.UPC_A; break;
       case 'UPC_E':
@@ -31,7 +31,7 @@ export default class BarcodeNode extends XMLNode {
         system = BARCODE_SYSTEM.CODE_128; break;
     }
 
-    switch(this.attributes.width) {
+    switch (this.attributes.width) {
       case 'DOT_250':
         width = BARCODE_WIDTH.DOT_250; break;
       case 'DOT_375':
@@ -46,7 +46,7 @@ export default class BarcodeNode extends XMLNode {
         width = BARCODE_WIDTH.DOT_375;
     }
 
-    switch(this.attributes.labelFont) {
+    switch (this.attributes.labelFont) {
       case 'FONT_A':
         labelFont = BARCODE_LABEL_FONT.FONT_A; break;
       case 'FONT_B':
@@ -55,7 +55,7 @@ export default class BarcodeNode extends XMLNode {
         labelFont = BARCODE_LABEL_FONT.FONT_A;
     }
 
-    switch(this.attributes.labelPosition) {
+    switch (this.attributes.labelPosition) {
       case 'NOT_PRINT':
         labelPosition = BARCODE_LABEL_POSITION.NOT_PRINT; break;
       case 'ABOVE':
@@ -68,26 +68,26 @@ export default class BarcodeNode extends XMLNode {
         labelPosition = BARCODE_LABEL_POSITION.BOTTOM;
     }
 
-    if(/\d+/.test(this.attributes.height)) {
+    if (/\d+/.test(this.attributes.height)) {
       height = parseInt(this.attributes.height);
     } else {
       height = 162;
     }
 
-    if(/\d+/.test(this.attributes.leftSpacing)) {
+    if (/\d+/.test(this.attributes.leftSpacing)) {
       leftSpacing = parseInt(this.attributes.leftSpacing);
     } else {
       leftSpacing = 0;
     }
 
-    if(system && this.content) {
+    if (system && this.content) {
       bufferBuilder.printBarcode(this.content, system, width, height, labelFont, labelPosition, leftSpacing);
     }
 
-    return  bufferBuilder;
+    return bufferBuilder;
   }
 
-  public close(bufferBuilder:BufferBuilder):BufferBuilder {
+  public close(bufferBuilder: BufferBuilder): BufferBuilder {
     return bufferBuilder;
   }
 

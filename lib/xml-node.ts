@@ -1,36 +1,36 @@
-import BufferBuilder from './buffer-builder';
+import { BufferBuilder } from './buffer-builder';
 
-export default abstract class XMLNode {
+export abstract class XMLNode {
 
-  protected attributes:any;
-  protected content:string;
-  protected children:XMLNode[];
+  protected attributes: any;
+  protected content: string;
+  protected children: XMLNode[];
 
-  constructor(node:any) {
+  constructor(node: any) {
     this.attributes = node.attributes || {};
     this.content = node.content;
     this.children = [];
   }
 
-  public addChild(child:XMLNode) {
-    if(child)
+  public addChild(child: XMLNode) {
+    if (child)
       this.children.push(child);
   }
 
-  protected getContent():string {
+  protected getContent(): string {
     return this.content;
   }
 
-  public abstract open(bufferBuilder:BufferBuilder):BufferBuilder;
+  public abstract open(bufferBuilder: BufferBuilder): BufferBuilder;
 
-  public abstract close(bufferBuilder:BufferBuilder):BufferBuilder;
+  public abstract close(bufferBuilder: BufferBuilder): BufferBuilder;
 
-  public draw(bufferBuilder:BufferBuilder):BufferBuilder {
+  public draw(bufferBuilder: BufferBuilder): BufferBuilder {
 
     // open tag
     this.open(bufferBuilder);
 
-    if(this.children.length > 0) {
+    if (this.children.length > 0) {
       this.children.forEach(child => child.draw(bufferBuilder));
     }
 
