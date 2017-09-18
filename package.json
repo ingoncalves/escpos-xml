@@ -4,7 +4,7 @@
   "description": "ESC/POS with XML interface",
   "homepage": "https://gitlab.com/datahex/escpos-xml#README",
   "author": "Guilherme Inácio Gonçalves",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "private": true,
   "main": "index.js",
   "types": "lib/index",
