@@ -1,5 +1,5 @@
 {
-  "name": "@datahex/escpos-xml",
+  "name": "escpos-xml",
   "version": "1.0.0",
   "description": "ESC/POS with XML interface",
   "homepage": "https://github.com/ingoncalves/escpos-xml#README",

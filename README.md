@@ -24,7 +24,7 @@ JavaScript library that implements the thermal printer ESC / POS protocol and pr
 Using npm:
 
 ```
-npm install --save @datahex/escpos-xml
+npm install --save escpos-xml
 ```
 
 ## Usage
