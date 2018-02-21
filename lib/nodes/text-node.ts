@@ -14,7 +14,7 @@ export default class TextNode extends XMLNode {
       bufferBuilder.setCharacterSize(size[0], size[1]);
     }
 
-    let text = this.getContent();
+    let text = this.getContent().replace(/&nbsp;/g, ' ');
     bufferBuilder.printText(text);
     return bufferBuilder;
   }
