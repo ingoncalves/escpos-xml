@@ -106,6 +106,7 @@ const xml = `
       <small>
           <text-line>Date: {{moment date format="DD/MM/YYYY HH:mm:ss"}}</text-line>
           <text-line size="1:0">{{numeral price format="$ 0,0.00"}}</text-line>
+          <text-line size="1:0">{{paddedString}}</text-line>
       </small>
       <line-feed />
       <underline>
@@ -144,6 +145,7 @@ const data = {
   description: 'This is a description',
   date: new Date(),
   price: 1.99,
+  paddedString: '&nbsp;&nbsp;&nbsp;&nbsp;Line padded with 4 spaces',
   condictionA: false,
   condictionB: true,
   barcode: '12345678',
@@ -155,4 +157,3 @@ const buffer = EscPos.getBufferFromTemplate(xml, data);
 // send this buffer to a stream (eg.: bluetooth)
 
 ```
-
