@@ -150,6 +150,16 @@ export class BufferBuilder {
     return this.buffer.flush();
   }
 
+  /**
+   * Register Paper Cut Action
+   * @return BufferBuilder
+   */
+  public paperCut(): BufferBuilder {
+    this.buffer.write(Command.GS_v(1));
+    return this;
+  }
+
+
 }
 
 export enum UNDERLINE_MODE {

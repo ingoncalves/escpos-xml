@@ -37,6 +37,7 @@ export class Command {
   public static GS_v0              = (m: number): number[] => [Command.GS, 0x76, 0x30, m]; // GSv0m
   public static GS_w               = (n: number): number[] => [Command.GS, 0x77, n]; // GSwn
   public static GS_x               = (n: number): number[] => [Command.GS, 0x78, n]; // GSxn
+  public static GS_v               = (n: number): number[] => [Command.GS, 0x56, n]; // GSv
 
   public static LF: number[]       = [Command.NL];
 
