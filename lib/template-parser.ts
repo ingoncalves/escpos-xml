@@ -22,6 +22,7 @@ export class TemplateParser {
     this.handlebars = handlebars;
     this.registerMoment();
     this.registerNumeral();
+    this.registerList();
   }
 
   private registerMoment() {
@@ -63,6 +64,16 @@ export class TemplateParser {
       }
 
       return this.numeral(context).format(block.hash.format);
+    });
+  }
+
+  private registerList() {
+    this.handlebars.registerHelper('list', (items, options) => {
+      var output = '';
+      for (var i in items) {
+        output += options.fn(items[i]);
+      }
+      return output;
     });
   }
 
