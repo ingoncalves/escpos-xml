@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: __dirname + '/lib/index.ts',
@@ -25,6 +25,10 @@ module.exports = {
   },
   plugins: [
     new UglifyJsPlugin()
-  ]
+  ],
+  node: {
+    fs: 'empty',
+    readline: 'empty'
+  }
 };
 
