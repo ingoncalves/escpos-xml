@@ -10,6 +10,7 @@ import TextNode from './nodes/text-node';
 import TextLineNode from './nodes/text-line-node';
 import UnderlineNode from './nodes/underline-node';
 import WhiteModeNode from './nodes/white-mode-node';
+import PaperCutNode from './nodes/paper-cut-node';
 
 export class NodeFactory {
 
@@ -27,6 +28,7 @@ export class NodeFactory {
       case 'text-line':  return new TextLineNode(node);
       case 'underline':  return new UnderlineNode(node);
       case 'white-mode': return new WhiteModeNode(node);
+      case 'paper-cut': return new PaperCutNode(node);
       default:           return null;
     }
   }

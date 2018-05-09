@@ -14,6 +14,7 @@ JavaScript library that implements the thermal printer ESC / POS protocol and pr
 - [x] Align
 - [x] Barcode
 - [x] QRcode
+- [x] Paper cut node
 - [ ]  Image
 - [x] XML with Handlebars
 - [x] Handlebars [Moment](http://momentjs.com) Helper
@@ -136,6 +137,7 @@ const xml = `
       <align mode="center">
           <qrcode ecl="M">{{qrcode}}</qrcode>
       </align>
+    <paper-cut/>
   </document>
 `;
 
