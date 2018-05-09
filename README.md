@@ -29,12 +29,12 @@ npm install --save escpos-xml
 
 ## Usage
 
-In JavaSript:
+In JavaScript:
 
 ### From plain XML
 ```js
 
-import { EscPos } from '@datahex/escpos-xml';
+import { EscPos } from 'escpos-xml';
 
 const xml = `
   <?xml version="1.0" encoding="UTF-8"?>
@@ -51,7 +51,7 @@ const buffer = EscPos.getBufferXML(xml);
 ### From XML + Handlebars
 ```js
 
-import { EscPos } from '@datahex/escpos-xml';
+import { EscPos } from 'escpos-xml';
 
 const xml = `
   <?xml version="1.0" encoding="UTF-8"?>
@@ -72,7 +72,7 @@ const buffer = EscPos.getBufferFromTemplate(xml, data);
 ### From Builder
 ```js
 
-import { EscPos } from '@datahex/escpos-xml';
+import { EscPos } from 'escpos-xml';
 
 
 const buffer = EscPos.getBufferBuilder()
@@ -88,7 +88,7 @@ Comming soon...
 For a while, this example may help you:
 
 ```js
-import { EscPos } from '@datahex/escpos-xml';
+import { EscPos } from 'escpos-xml';
 
 const xml = `
   <?xml version="1.0" encoding="UTF-8"?>
