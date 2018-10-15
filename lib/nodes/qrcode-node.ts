@@ -1,5 +1,6 @@
 import { XMLNode } from '../xml-node';
-import { BufferBuilder, QR_EC_LEVEL } from '../buffer-builder';
+import { BufferBuilder } from '../buffer-builder';
+import { QR_EC_LEVEL } from '../command';
 
 export default class QRcodeNode extends XMLNode {
 

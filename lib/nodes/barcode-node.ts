@@ -1,5 +1,6 @@
 import { XMLNode } from '../xml-node';
-import { BufferBuilder, BARCODE_SYSTEM, BARCODE_WIDTH, BARCODE_LABEL_FONT, BARCODE_LABEL_POSITION } from '../buffer-builder';
+import { BufferBuilder } from '../buffer-builder';
+import { BARCODE_SYSTEM, BARCODE_LABEL_FONT, BARCODE_LABEL_POSITION } from '../command';
 
 export default class BarcodeNode extends XMLNode {
 
@@ -29,21 +30,6 @@ export default class BarcodeNode extends XMLNode {
         system = BARCODE_SYSTEM.CODE_93; break;
       case 'CODE_128':
         system = BARCODE_SYSTEM.CODE_128; break;
-    }
-
-    switch (this.attributes.width) {
-      case 'DOT_250':
-        width = BARCODE_WIDTH.DOT_250; break;
-      case 'DOT_375':
-        width = BARCODE_WIDTH.DOT_375; break;
-      case 'DOT_560':
-        width = BARCODE_WIDTH.DOT_560; break;
-      case 'DOT_625':
-        width = BARCODE_WIDTH.DOT_625; break;
-      case 'DOT_750':
-        width = BARCODE_WIDTH.DOT_750; break;
-      default:
-        width = BARCODE_WIDTH.DOT_375;
     }
 
     switch (this.attributes.labelFont) {
