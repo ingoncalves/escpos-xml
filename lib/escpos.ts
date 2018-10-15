@@ -4,18 +4,22 @@ import { BufferBuilder } from './buffer-builder';
 
 export class EscPos {
 
-  public static getBufferFromTemplate(template: string, data: any): number[] {
-    let templateParser = new TemplateParser();
+  constructor(private command: any) {
+
+  }
+
+  public getBufferFromTemplate(template: string, data: any): number[] {
+    let templateParser = new TemplateParser(this.command);
     return templateParser.parser(template, data).build();
   }
 
-  public static getBufferFromXML(xml: string): number[] {
-    let xmlParser = new XMLParser();
+  public getBufferFromXML(xml: string): number[] {
+    let xmlParser = new XMLParser(this.command);
     return xmlParser.parser(xml).build();
   }
 
-  public static getBufferBuilder(): BufferBuilder {
-    return new BufferBuilder();
+  public getBufferBuilder(): BufferBuilder {
+    return new BufferBuilder(this.command);
   }
 
 }
