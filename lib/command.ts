@@ -1,18 +1,18 @@
 export abstract class Command {
 
-  public static ESC: number;
-  public static FF: number;
-  public static FS: number;
-  public static GS: number;
-  public static DC1: number;
-  public static DC4: number;
-  public static DLE: number;
-  public static NL: number;
-  public static SP: number;
-  public static US: number;
-  public static ESC_init: number[]; //ESC@
-  public static FS_and: number[]; //ESC@
-  public static LF: number[];
+  public ESC: number;
+  public FF: number;
+  public FS: number;
+  public GS: number;
+  public DC1: number;
+  public DC4: number;
+  public DLE: number;
+  public NL: number;
+  public SP: number;
+  public US: number;
+  public ESC_init: number[]; //ESC@
+  public FS_and: number[]; //ESC@
+  public LF: number[];
   abstract DLE_EOT(n: number): number[]; // DLEEOTn
   abstract ESC_exclamation(n: number): number[]; // ESC!n
   abstract ESC_minus(n: number): number[]; // ESC-n
