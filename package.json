@@ -1,8 +1,8 @@
 {
-  "name": "escpos-xml",
-  "version": "1.0.0",
+  "name": "@datahex/escpos-xml",
+  "version": "1.0.1",
   "description": "ESC/POS with XML interface",
-  "homepage": "https://github.com/ingoncalves/escpos-xml#README",
+  "homepage": "https://github.com/datahex/escpos-xml#README",
   "author": "Guilherme Inácio Gonçalves",
   "license": "Apache-2.0",
   "main": "index.js",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ingoncalves/escpos-xml.git"
+    "url": "git+https://github.com/datahex/escpos-xml.git"
   },
   "keywords": [
     "escpos",
@@ -31,7 +31,7 @@
     "printer"
   ],
   "bugs": {
-    "url": "https://github.com/ingoncalves/escpos-xml/issues"
+    "url": "https://github.com/datahex/escpos-xml/issues"
   },
   "dependencies": {
     "handlebars": "^4.0.10",
