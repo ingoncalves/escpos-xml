@@ -1,6 +1,6 @@
 {
   "name": "escpos-xml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESC/POS with XML interface",
   "homepage": "https://github.com/ingoncalves/escpos-xml#README",
   "author": "Guilherme Inácio Gonçalves",
