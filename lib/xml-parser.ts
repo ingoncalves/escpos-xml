@@ -2,8 +2,13 @@ import * as parser from 'xml-parser';
 import { BufferBuilder } from './buffer-builder';
 import { XMLNode } from './xml-node';
 import { NodeFactory } from './node-factory';
+import { Command } from './command';
 
 export class XMLParser {
+
+  constructor(private command: Command) {
+
+  }
 
   public parser(xml: string): BufferBuilder {
     let parsedXML = parser(xml);
@@ -11,7 +16,7 @@ export class XMLParser {
   }
 
   private compile(parsedXML: any): BufferBuilder {
-    let bufferBuilder = new BufferBuilder();
+    let bufferBuilder = new BufferBuilder(this.command);
     let rootNode = this.adapter(parsedXML.root, null);
     return rootNode.draw(bufferBuilder);
   }
