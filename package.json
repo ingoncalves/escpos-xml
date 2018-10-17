@@ -1,6 +1,6 @@
 {
   "name": "@datahex/escpos-xml",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ESC/POS with XML interface",
   "homepage": "https://github.com/datahex/escpos-xml#README",
   "author": "Guilherme Inácio Gonçalves",
