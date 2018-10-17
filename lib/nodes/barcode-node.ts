@@ -1,6 +1,6 @@
 import { XMLNode } from '../xml-node';
 import { BufferBuilder } from '../buffer-builder';
-import { BARCODE_SYSTEM, BARCODE_LABEL_FONT, BARCODE_LABEL_POSITION } from '../command';
+import { BARCODE_SYSTEM, BARCODE_LABEL_FONT, BARCODE_LABEL_POSITION } from '../commands/command';
 
 export default class BarcodeNode extends XMLNode {
 

@@ -1,4 +1,4 @@
-import { Command } from './command';
+import { Command } from './commands/command';
 import { MutableBuffer } from 'mutable-buffer';
 
 export class BufferBuilder {
