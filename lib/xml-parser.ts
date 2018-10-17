@@ -2,7 +2,7 @@ import * as parser from 'xml-parser';
 import { BufferBuilder } from './buffer-builder';
 import { XMLNode } from './xml-node';
 import { NodeFactory } from './node-factory';
-import { Command } from './command';
+import { Command } from './commands/command';
 
 export class XMLParser {
 

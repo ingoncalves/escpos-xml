@@ -5,7 +5,7 @@ import 'numeral/locales/pt-br';
 import { cloneDeep } from 'lodash';
 import { XMLParser } from './xml-parser';
 import { BufferBuilder } from './buffer-builder';
-import { Command } from './command';
+import { Command } from './commands/command';
 
 export class TemplateParser {
 
