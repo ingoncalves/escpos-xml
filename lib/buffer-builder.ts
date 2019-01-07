@@ -1,11 +1,12 @@
-import { Command } from './commands/command';
+import { Command } from './command';
 import { MutableBuffer } from 'mutable-buffer';
+import bluetoothprintercommand from './printers/bluetoothprinter/bluetoothprintercommand';
 
 export class BufferBuilder {
 
-  private buffer: MutableBuffer;
+  protected buffer: MutableBuffer;
 
-  constructor(private command: Command, private defaultSettings: boolean = true) {
+  constructor(public command: Command = new bluetoothprintercommand, protected defaultSettings: boolean = true) {
     this.buffer = new MutableBuffer();
 
     if (this.defaultSettings) {
