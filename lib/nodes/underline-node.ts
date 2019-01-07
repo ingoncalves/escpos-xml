@@ -1,6 +1,6 @@
 import { XMLNode } from '../xml-node';
 import { BufferBuilder } from '../buffer-builder';
-import { UNDERLINE_MODE } from '../commands/command';
+import { UNDERLINE_MODE } from '../command';
 
 export default class UnderlineNode extends XMLNode {
 

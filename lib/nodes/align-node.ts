@@ -1,6 +1,6 @@
 import { XMLNode } from '../xml-node';
 import { BufferBuilder } from '../buffer-builder';
-import { ALIGNMENT } from '../commands/command';
+import { ALIGNMENT } from '../command';
 
 export default class AlignNode extends XMLNode {
 
