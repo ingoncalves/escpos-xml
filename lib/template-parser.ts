@@ -13,7 +13,7 @@ export class TemplateParser {
   private numeral: any;
   private handlebars: any;
 
-  constructor(private command: Command) {
+  constructor(protected buffer: BufferBuilder) {
     this.moment = moment;
     this.moment.locale('pt-br');
 
@@ -70,7 +70,7 @@ export class TemplateParser {
   public parser(template, scope): BufferBuilder {
     let fn = this.handlebars.compile(template);
     let xml = fn(scope);
-    return new XMLParser(this.command).parser(xml);
+    return new XMLParser(this.buffer).parser(xml);
   }
 
 }

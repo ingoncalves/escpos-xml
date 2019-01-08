@@ -9,7 +9,7 @@ const devices = {
   iposprinter
 }
 
-export function definePrinter(deviceName): BufferBuilder {
+export function definePrinter(deviceName) {
     let printer = devices[`${deviceName.toLowerCase().replace(/ /g,'')}`];
     if (printer) return new printer();
     return new BufferBuilder();

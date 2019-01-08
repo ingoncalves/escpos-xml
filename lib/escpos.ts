@@ -1,32 +1,32 @@
 import { TemplateParser } from './template-parser';
 import { XMLParser } from './xml-parser';
-import { BufferBuilder } from './buffer-builder';
 import { definePrinter } from './define-printer';
+import { BufferBuilder } from './buffer-builder';
 
 export class EscPos {
 
   private builder: BufferBuilder;
 
   constructor(deviceName: string) {
-    this.builder = this.getBuilderFromDeviceName(deviceName);
+    this.builder = this.getBuilderFromPrinter(deviceName);
   }
 
-  private getBuilderFromDeviceName(name: string) {
+  private getBuilderFromPrinter(name: string) {
     return definePrinter(name);
   }
 
   public getBufferFromTemplate(template: string, data: any): number[] {
-    let templateParser = new TemplateParser(this.builder.command);
+    let templateParser = new TemplateParser(this.builder);
     return templateParser.parser(template, data).build();
   }
 
   public getBufferFromXML(xml: string): number[] {
-    let xmlParser = new XMLParser(this.builder.command);
+    let xmlParser = new XMLParser(this.builder);
     return xmlParser.parser(xml).build();
   }
 
-  public getBufferBuilder(): BufferBuilder {
-    return new BufferBuilder(this.builder.command);
+  public getBufferBuilder() {
+    return this.builder;
   }
 
 }

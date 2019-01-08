@@ -6,7 +6,7 @@ import { Command } from './command';
 
 export class XMLParser {
 
-  constructor(private command: Command) {
+  constructor(protected buffer: BufferBuilder) {
 
   }
 
@@ -16,9 +16,8 @@ export class XMLParser {
   }
 
   private compile(parsedXML: any): BufferBuilder {
-    let bufferBuilder = new BufferBuilder(this.command);
     let rootNode = this.adapter(parsedXML.root, null);
-    return rootNode.draw(bufferBuilder);
+    return rootNode.draw(this.buffer);
   }
 
   private adapter(node: any, parentNode): XMLNode {

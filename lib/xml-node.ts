@@ -26,7 +26,6 @@ export abstract class XMLNode {
   public abstract close(bufferBuilder: BufferBuilder): BufferBuilder;
 
   public draw(bufferBuilder: BufferBuilder): BufferBuilder {
-
     // open tag
     this.open(bufferBuilder);
 

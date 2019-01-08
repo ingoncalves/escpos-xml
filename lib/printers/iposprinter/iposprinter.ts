@@ -3,8 +3,8 @@ import iposprintercommand from "./iposprintercommand";
 
 export default class IposPrinter extends BufferBuilder {
 
-    constructor(command: iposprintercommand) {
-        super(command);
+    constructor() {
+        super(new iposprintercommand());
     }
 
 

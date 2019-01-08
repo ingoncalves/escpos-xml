@@ -8,7 +8,7 @@ export default class BarcodeNode extends XMLNode {
     super(node);
   }
 
-  public open(bufferBuilder: BufferBuilder): BufferBuilder {
+  public open(bufferBuilder: any): any {
     let system, width, height, labelFont, labelPosition, leftSpacing;
 
     switch (this.attributes.system) {
@@ -54,26 +54,19 @@ export default class BarcodeNode extends XMLNode {
         labelPosition = BARCODE_LABEL_POSITION.BOTTOM;
     }
 
-    if (/\d+/.test(this.attributes.height)) {
+    if (/\d+/.test(this.attributes.height))
       height = parseInt(this.attributes.height);
-    } else {
-      height = 162;
-    }
 
-    if (/\d+/.test(this.attributes.leftSpacing)) {
+    if (/\d+/.test(this.attributes.leftSpacing))
       leftSpacing = parseInt(this.attributes.leftSpacing);
-    } else {
-      leftSpacing = 0;
-    }
 
-    if (system && this.content) {
+    if (system && this.content)
       bufferBuilder.printBarcode(this.content, system, width, height, labelFont, labelPosition, leftSpacing);
-    }
 
     return bufferBuilder;
   }
 
-  public close(bufferBuilder: BufferBuilder): BufferBuilder {
+  public close(bufferBuilder: any): BufferBuilder {
     return bufferBuilder;
   }
 

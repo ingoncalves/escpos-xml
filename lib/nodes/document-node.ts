@@ -15,7 +15,8 @@ export default class DocumentNode extends XMLNode {
   }
 
   public close(bufferBuilder: BufferBuilder): BufferBuilder {
-    bufferBuilder.endReverseMode();
+    if (this.attributes.reverse)
+      bufferBuilder.endReverseMode();
     return bufferBuilder;
   }
 }
