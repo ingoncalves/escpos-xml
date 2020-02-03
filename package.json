@@ -1,12 +1,12 @@
 {
   "name": "escpos-xml",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ESC/POS with XML interface",
   "homepage": "https://github.com/ingoncalves/escpos-xml#README",
   "author": "Guilherme Inácio Gonçalves",
   "license": "Apache-2.0",
-  "main": "index.js",
-  "types": "lib/index",
+  "main": "dist/index.js",
+  "types" : "dist/index.d.ts",
   "engines": {
     "node": ">=4.0.0"
   },
@@ -16,7 +16,6 @@
     "webpack:build": "webpack --config webpack.config.js",
     "webpack:watch": "webpack --config webpack.config.js --watch",
     "lint": "tslint --format codeFrame --type-check --project tslint.json lib/**/*.ts",
-    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

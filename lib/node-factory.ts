@@ -14,7 +14,7 @@ import PaperCutNode from './nodes/paper-cut-node';
 
 export class NodeFactory {
 
-  public static create(nodeType: String, node) {
+  public static create(nodeType: String, node: any) {
     switch (nodeType) {
       case 'align':      return new AlignNode(node);
       case 'barcode':    return new BarcodeNode(node);
@@ -28,7 +28,7 @@ export class NodeFactory {
       case 'text-line':  return new TextLineNode(node);
       case 'underline':  return new UnderlineNode(node);
       case 'white-mode': return new WhiteModeNode(node);
-      case 'paper-cut': return new PaperCutNode(node);
+      case 'paper-cut':  return new PaperCutNode(node);
       default:           return null;
     }
   }

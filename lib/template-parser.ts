@@ -25,7 +25,7 @@ export class TemplateParser {
   }
 
   private registerMoment() {
-    this.handlebars.registerHelper('moment', (context, block) => {
+    this.handlebars.registerHelper('moment', (context: any, block: any) => {
       if (context && context.hash) {
         block = cloneDeep(context);
         context = undefined;
@@ -56,7 +56,7 @@ export class TemplateParser {
   }
 
   private registerNumeral() {
-    this.handlebars.registerHelper('numeral', (context, block) => {
+    this.handlebars.registerHelper('numeral', (context: any, block: any) => {
       if (context && context.hash) {
         block = cloneDeep(context);
         context = undefined;
@@ -66,7 +66,7 @@ export class TemplateParser {
     });
   }
 
-  public parser(template, scope): BufferBuilder {
+  public parser(template: string, scope: any): BufferBuilder {
     let fn = this.handlebars.compile(template);
     let xml = fn(scope);
     return new XMLParser().parser(xml);

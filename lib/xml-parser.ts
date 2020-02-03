@@ -16,11 +16,11 @@ export class XMLParser {
     return rootNode.draw(bufferBuilder);
   }
 
-  private adapter(node: any, parentNode): XMLNode {
-    let xmlNode: XMLNode = NodeFactory.create(node.name, node);
+  private adapter(node: any, parentNode: any): XMLNode {
+    let xmlNode: XMLNode = NodeFactory.create(node.name, node) as XMLNode;
     if (parentNode) parentNode.addChild(xmlNode);
     if (node.children.length > 0) {
-      node.children.forEach(child => {
+      node.children.forEach((child: any) => {
         this.adapter(child, xmlNode);
       });
     }
